@@ -1,0 +1,25 @@
+Guide to installing and configuring an NTP server on Ubuntu server v20.04.3
+
+Legend: $ = Command to run on command line
+	# = Comments
+
+Installation
+1. Update/upgrade repository
+	$ sudo apt-get update
+	$ sudo apt-get upgrade
+2. Install NTP Server with apt
+	$ sudo apt-get install ntp
+3. Verify installation
+	$ sntp --version
+
+Configuraton
+1. Switch to an NTP server pool according to your destination at https://support.ntp.org/bin/view/Servers/NTPPoolServers
+	# delete the pool list and replace it with the pool list from the website that best match your location
+	$ sudo vim /etc/ntp.conf
+2. Restart NTP Server
+	$ sudo service ntp restart
+3. Verify that the NTP Server is running
+	$ sudo service ntp status
+4. Configure Firewall so that clients can access NTP Server
+	# Configure your UFW firewall to accept connections at UDP Port 123
+	$ sudo ufw allow from any to any port 123 proto udp	
