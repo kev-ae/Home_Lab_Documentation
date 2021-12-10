@@ -1,0 +1,28 @@
+How to configure NTP Client to connect to your NTP server using Ubuntu
+
+Legend: $ Commands to run on command line
+	# Comments
+
+Instructions
+1. Update/upgrade repository
+	$ sudo apt-get update
+	$ sudo apt-get upgrade
+2. Install ntpdate
+	$ sudo apt-get install ntpdate
+3. Specify IP and hostname of NTP Server in hosts file
+	# added your NTP server's IP and specify a hostname
+	$ sudo vim /etc/hosts
+4. Verify that the client machine's time is synchronized with NTP Server
+	$ sudo ntpdate hostname
+	# replace hostname with the hostname you enter in your hosts file
+5. Disable systemd timesyncd service on client
+	$ sudo timedatectl set-ntp off
+6. Install NTP on your client
+	$ sudo apt-get install ntp
+7. Configure ntp.config file to add NTP Server as the new time server
+	$ sudo vim /etc/ntp.conf
+	# add "server hostname prefer iburst" to config file where hostname replaced with your actual hostname
+8. Restart NTP Server on client
+	$ sudo service ntp restart
+9. View Time Synchronization Queue
+	$ ntpq -ps
