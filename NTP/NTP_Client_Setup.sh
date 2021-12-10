@@ -7,14 +7,14 @@ then
 	exit 1
 fi
 
-serverip = $1
+serverip=$1
 
 # check for host name
 if [ "$2" == "" ]
 then
-	hostname = "NTP-server-host"
+	hostname="NTP-server-host"
 else
-	hostname = "$2"
+	hostname="$2"
 fi
 
 # update repo
