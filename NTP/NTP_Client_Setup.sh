@@ -18,27 +18,27 @@ else
 fi
 
 # update repo
-sudo apt-get update
-sudo apt-get upgrade
+apt-get -y update
+apt-get -y upgrade
 
 # entering server's ip address into config and hostname
-sudo echo "$serverip $hostname" >> /etc/hosts
+ echo "$serverip $hostname" >> /etc/hosts
 
 # check synchronized
-echo "Enter CTRL-Z then check for synchronized using command sudo ntpdate $hostname"
+echo "Enter CTRL-Z then check for synchronized using command  ntpdate $hostname"
 echo "Once you are done, enter fg then push a button to continue script"
 read
 
 # disable the systemd timesyncd service
-sudo timedatectl set-ntp off
+timedatectl set-ntp off
 
 # installing ntp on client
-sudo apt-get install ntp
+apt-get -y install ntp
 
 # configure ntp config file
-sudo echo "server $hostname prefer iburst" >> /etc/ntp.conf
+echo "server $hostname prefer iburst" >> /etc/ntp.conf
 
 # restart ntp server
-sudo service ntp restart
+service ntp restart
 
 echo "now check queue using command ntpq -ps"

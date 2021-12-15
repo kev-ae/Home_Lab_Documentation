@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # update the repo before installing ntp
-sudo apt-get update
-sudo apt-get upgrade
+apt-get -y update
+apt-get -y upgrade
 
 # installing ntp
-sudo apt-get install ntp
+apt-get -y install ntp
 
 # check if ntp was install correctly
 if [ $(sntp --version) == "" ]
