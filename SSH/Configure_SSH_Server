@@ -1,0 +1,17 @@
+How to install an SSH server on ubuntu server
+
+legends
+# comments
+$ commands
+
+# To install the SSH server on ubuntu, run the command below
+	$ sudo apt-get install openssh-server
+
+# To add a user in order to connect via the SSH client, replace nameOfUser
+	$ sudo useradd nameOfUser
+
+# To make a password for the user
+	$ sudo passwd nameOfUser
+
+# How to get ipaddress so clients can connect
+	$ ifconfig

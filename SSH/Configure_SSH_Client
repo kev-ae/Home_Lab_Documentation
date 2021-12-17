@@ -1,0 +1,11 @@
+How to install SSH client
+
+legends
+# comments
+$ commands
+
+# To install the SSH client
+	$ sudo apt-get install openssh-client
+
+# To connect to the SSH server, replace 'username' with your username on the server and 'ipaddress' with the address of the server
+	$ ssh username@ipaddress
