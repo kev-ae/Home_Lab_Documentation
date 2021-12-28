@@ -1,0 +1,46 @@
+Instructions on how to set up a FTP server on linux (DEB/RHEL)
+
+Legend:
+# comments
+@ header
+$ command line
+
+@ Installing VSFTPD
+# First install vsftpd using your distro package manager
+
+# RHEL
+$ sudo dnf install vsftpd
+
+# DEB
+$ sudo apt-get install vsftpd
+
+@ Configuring your FTP server
+# You can change the configuration of your FTP server in the vsftpd.conf file in /etc/.
+# The file is well-documented with most changes being highlighted. To see all available options
+# and basic documentation, run the command below
+$ man vsftpd.conf
+
+@ Enable uploading
+# Change the write_enable flag to YES
+
+@ Allowing local users to login
+# Change the local_enable flag to YES
+
+@ Allow anonymous login
+# Change the 4 flags below
+
+# Allow anonymous login
+anonymous_enable=YES
+# No password is required for an anonymous login (Optional)
+no_anon_password=YES
+# Maximum transfer rate for an anonymous client in Bytes/second (Optional)
+anon_max_rate=30000
+# Directory to be used for an anonymous login (Optional)
+anon_root=/example/directory/
+
+@ Lock user to only their home directory (Chroot Jail)
+# Enable the chroot_list_enable flag to YES and set chroot_list_file to /etc/vsftpd.chroot_list
+
+@ After configuring your server
+# After finishing configuaration, restart the service using the command below
+$ sudo systemctl restart vsftpd
