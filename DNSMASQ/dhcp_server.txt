@@ -1,0 +1,22 @@
+How to use dnsmasq as a dhcp server on Ubuntu Server
+
+Legends:
+# comments
+$ commands
+@ sections
+
+@ How to install dnsmasq
+# Update and install using the package manager
+$ sudo apt update && apt upgrade
+$ sudo apt install dnsmasq
+
+@ How to supply dhcp conf file to dnsmasq
+# This folder contain an example file to supply to dnsmasq
+$ sudo dnsmasq -d -q -C dhcp.conf
+
+@ Testing
+$ sudo dhclient -i eth_interface -v
+$ ip address show eth_interface
+
+# Check with dig
+$ dig @localhost instance-1.domain

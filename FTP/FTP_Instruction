@@ -44,3 +44,11 @@ anon_root=/example/directory/
 @ After configuring your server
 # After finishing configuaration, restart the service using the command below
 $ sudo systemctl restart vsftpd
+
+@ Clients connections
+# Clients can connect to our FTP server using lftp
+$ sudo apt install lftp
+# Note that you need to turn on anonymous login to login in without a username and password
+$ lftp ipaddress
+# Here is what it looks like with a username and password
+$ lftp username@ipaddress

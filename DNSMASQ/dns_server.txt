@@ -1,0 +1,28 @@
+How to install and use dnsmasq to manage dns and dhcp in an Ubuntu Server
+
+Legends:
+# comments
+$ commands
+@ sections
+
+@ Installing dnsmasq
+# Update packages and install dnsmasq
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt install dnsmasq
+
+# By default, dnsmasq is configure to run the moment that it is installed. You can check if your dns server is
+# working by using the dig command
+
+@ Checking that your dns server is working
+# Stop the dnsmasq service and start it in debugged mode
+$ sudo service dnsmasq stop
+$ sudo dnsmasq -d -q
+
+# Use the dig command to see if the service is working in a different terminal
+$ dig www.example.com @localhost
+
+# Look at the logs that dnsmasq produce and check to make sure that it is querying the request
+
+# You can also supplyed dnsmasq with a txt file containing some mapping of ip addresses to host name
+$ sudo dnsmasq -d -q -h file_containting_addresses.txt
